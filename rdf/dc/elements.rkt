@@ -9,10 +9,11 @@
 ;; Support status: complete
 ;;
 
-(require (only-in "../namespace.rkt"
+(require (only-in rdf/core/namespace
                   string->namespace
-                  namespace+name->nsname)
-         (only-in "../nsmap.rkt"
+                  make-nsname)
+         (only-in rdf/core/nsmap
+                  string->prefix
                   nsmap-set!))
 
 (provide (all-defined-out))
@@ -28,25 +29,25 @@
 
 (define (nsmap-add-dc-elements map)
   (nsmap-set! map
-              dc-prefix-string
+              (string->prefix dc-prefix-string)
               (string->namespace dc-namespace-string)))
 
 ;; ================================================================================================
 ;; Name definitions
 ;; ================================================================================================
 
-(define dc:contributor (namespace+name->nsname dc: "contributor"))
-(define dc:coverage (namespace+name->nsname dc: "coverage"))
-(define dc:creator (namespace+name->nsname dc: "creator"))
-(define dc:date (namespace+name->nsname dc: "date"))
-(define dc:description (namespace+name->nsname dc: "description"))
-(define dc:format (namespace+name->nsname dc: "format"))
-(define dc:identifier (namespace+name->nsname dc: "identifier"))
-(define dc:language (namespace+name->nsname dc: "language"))
-(define dc:publisher (namespace+name->nsname dc: "publisher"))
-(define dc:relation (namespace+name->nsname dc: "relation"))
-(define dc:rights (namespace+name->nsname dc: "rights"))
-(define dc:source (namespace+name->nsname dc: "source"))
-(define dc:subject (namespace+name->nsname dc: "subject"))
-(define dc:title (namespace+name->nsname dc: "title"))
-(define dc:type (namespace+name->nsname dc: "type"))
+(define dc:contributor (make-nsname dc: "contributor"))
+(define dc:coverage (make-nsname dc: "coverage"))
+(define dc:creator (make-nsname dc: "creator"))
+(define dc:date (make-nsname dc: "date"))
+(define dc:description (make-nsname dc: "description"))
+(define dc:format (make-nsname dc: "format"))
+(define dc:identifier (make-nsname dc: "identifier"))
+(define dc:language (make-nsname dc: "language"))
+(define dc:publisher (make-nsname dc: "publisher"))
+(define dc:relation (make-nsname dc: "relation"))
+(define dc:rights (make-nsname dc: "rights"))
+(define dc:source (make-nsname dc: "source"))
+(define dc:subject (make-nsname dc: "subject"))
+(define dc:title (make-nsname dc: "title"))
+(define dc:type (make-nsname dc: "type"))

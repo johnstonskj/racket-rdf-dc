@@ -9,10 +9,11 @@
 ;; Support status: complete
 ;;
 
-(require (only-in "../namespace.rkt"
+(require (only-in rdf/core/namespace
                   string->namespace
-                  namespace+name->nsname)
-         (only-in "../nsmap.rkt"
+                  make-nsname)
+         (only-in rdf/core/nsmap
+                  string->prefix
                   nsmap-set!))
 
 (provide (all-defined-out))
@@ -26,24 +27,24 @@
 
 (define dctype: (string->namespace dctype-namespace-string))
 
-(define (nsmap-add-dc-terms map)
+(define (nsmap-add-dc-dctype map)
   (nsmap-set! map
-              dctype-prefix-string
+              (string->prefix dctype-prefix-string)
               (string->namespace dctype-namespace-string)))
 
 ;; ================================================================================================
 ;; Name definitions
 ;; ================================================================================================
 
-(define dctype:Collection (namespace+name->nsname dctype: "Collection"))
-(define dctype:Dataset (namespace+name->nsname dctype: "Dataset"))
-(define dctype:Event (namespace+name->nsname dctype: "Event"))
-(define dctype:Image (namespace+name->nsname dctype: "Image"))
-(define dctype:InteractiveResource (namespace+name->nsname dctype: "InteractiveResource"))
-(define dctype:MovingImage (namespace+name->nsname dctype: "MovingImage"))
-(define dctype:PhysicalObject (namespace+name->nsname dctype: "PhysicalObject"))
-(define dctype:Service (namespace+name->nsname dctype: "Service"))
-(define dctype:Software (namespace+name->nsname dctype: "Software"))
-(define dctype:Sound (namespace+name->nsname dctype: "Sound"))
-(define dctype:StillImage (namespace+name->nsname dctype: "StillImage"))
-(define dctype:Text (namespace+name->nsname dctype: "Text"))
+(define dctype:Collection (make-nsname dctype: "Collection"))
+(define dctype:Dataset (make-nsname dctype: "Dataset"))
+(define dctype:Event (make-nsname dctype: "Event"))
+(define dctype:Image (make-nsname dctype: "Image"))
+(define dctype:InteractiveResource (make-nsname dctype: "InteractiveResource"))
+(define dctype:MovingImage (make-nsname dctype: "MovingImage"))
+(define dctype:PhysicalObject (make-nsname dctype: "PhysicalObject"))
+(define dctype:Service (make-nsname dctype: "Service"))
+(define dctype:Software (make-nsname dctype: "Software"))
+(define dctype:Sound (make-nsname dctype: "Sound"))
+(define dctype:StillImage (make-nsname dctype: "StillImage"))
+(define dctype:Text (make-nsname dctype: "Text"))
