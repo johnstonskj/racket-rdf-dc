@@ -3,20 +3,17 @@
 @(require racket/sandbox
           scribble/core
           scribble/eval
-          rdf/dc/terms
-          rdf/dc/elements
-          rdf/dc/type
-          rdf/dc/cam
           (for-label rdf/core/name
-                     rdf/core/namespace
                      rdf/core/nsmap
-                     rdf/dc/terms
+                     rdf/core/nsname
+                     rdf/dc/cam
                      rdf/dc/elements
+                     rdf/dc/terms
                      rdf/dc/type
-                     rdf/dc/cam))
+                     rdf/dc/terms))
 
 @;{============================================================================}
-@title[#:version  "0.1.0"]{RDF Dublin Core Vocabularies}
+@title[#:version  "0.1.1"]{RDF Dublin Core Vocabularies}
 @author[(author+email "Simon Johnston" "johnstonskj@gmail.com")]
 
 This package provides modules, using package rdf-core, to capture the vocabularies defined by the @cite["DCMIMT"]

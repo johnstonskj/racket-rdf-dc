@@ -9,12 +9,15 @@
 ;; Support status: complete
 ;;
 
-(require (only-in rdf/core/namespace
-                  string->namespace
-                  make-nsname)
+(require (only-in rdf/core/name
+                  string->local-name)
          (only-in rdf/core/nsmap
                   string->prefix
-                  nsmap-set!))
+                  nsmap-set!)
+         (only-in rdf/core/nsname
+                  make-nsname)
+         (only-in rdf/core/resource
+                  string->resource))
 
 (provide (all-defined-out))
 
@@ -25,18 +28,22 @@
 (define dcam-prefix-string "dcam!")
 (define dcam-namespace-string "http://purl.org/dc/dcam/")
 
-(define dcam: (string->namespace dcam-namespace-string))
+(define dcam: (string->resource dcam-namespace-string))
 
 (define (nsmap-add-dc-dcam map)
   (nsmap-set! map
               (string->prefix dcam-prefix-string)
-              (string->namespace dcam-namespace-string)))
+              (string->resource dcam-namespace-string)))
 
 ;; ================================================================================================
 ;; Name definitions
 ;; ================================================================================================
 
-(define dcam:domainIncludes (make-nsname dcam: "domainIncludes"))
-(define dcam:memberOf (make-nsname dcam: "memberOf"))
-(define dcam:rangeIncludes (make-nsname dcam: "rangeIncludes"))
-(define dcam:VocabularyEncodingScheme (make-nsname dcam: "VocabularyEncodingScheme"))
+(define dcam:domainIncludes
+  (make-nsname dcam: (string->local-name "domainIncludes")))
+(define dcam:memberOf
+  (make-nsname dcam: (string->local-name "memberOf")))
+(define dcam:rangeIncludes
+  (make-nsname dcam: (string->local-name "rangeIncludes")))
+(define dcam:VocabularyEncodingScheme
+  (make-nsname dcam: (string->local-name "VocabularyEncodingScheme")))
